@@ -18,7 +18,15 @@ jobs:
         run: cargo install wasm-pack
 
       - name: Build WASM
-        run: wasm-pack build --target web --release
+        run: |
+          # Tạo thư mục config cho Cargo trên server
+          mkdir -p .cargo
+          # Ghi đè cấu hình RUSTFLAGS vào file
+          echo '[target.wasm32-unknown-unknown]' > .cargo/config.toml
+          echo 'rustflags = ["--cfg", "getrandom_backend=\"wasm_js\""]' >> .cargo/config.toml
+          
+          # Chạy build
+          wasm-pack build --target web --release
       - name: Upload pkg folder
         uses: actions/upload-artifact@v4
         with:

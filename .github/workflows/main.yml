@@ -15,7 +15,7 @@ jobs:
           targets: wasm32-unknown-unknown
 
       - name: Install wasm-pack
-        run: curl https://rustwasm.github.io -sSf | sh
+        run: cargo install wasm-pack
 
       - name: Build WASM
         # Sử dụng cờ để tránh lỗi các thư viện I/O nếu có

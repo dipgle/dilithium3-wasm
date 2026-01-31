@@ -1,7 +1,8 @@
 use pqcrypto_traits::sign::{DetachedSignature, PublicKey, SecretKey};
 use wasm_bindgen::prelude::*;
 use pqcrypto_dilithium::dilithium3;
-
+#[cfg(target_arch = "wasm32")]
+extern crate getrandom;
 #[wasm_bindgen]
 pub struct KeyPair {
     pub_key: Vec<u8>,

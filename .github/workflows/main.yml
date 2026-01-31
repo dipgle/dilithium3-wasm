@@ -22,7 +22,7 @@ jobs:
         # run: RUSTFLAGS='--cfg=web_sys_unstable_apis' wasm-pack build --target web --release
         env:
           # Thêm flag wasm_js vào RUSTFLAGS
-          RUSTFLAGS: --cfg getrandom_backend="wasm_js"
+          RUSTFLAGS: '--cfg getrandom_backend="wasm_js"'
         run: wasm-pack build --target web --release
       - name: Upload pkg folder
         uses: actions/upload-artifact@v4

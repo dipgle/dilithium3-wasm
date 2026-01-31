@@ -18,7 +18,7 @@ jobs:
         run: cargo install wasm-pack
 
       - name: Build WASM
-        run: wasm-pack build --target web --release
+        run: RUSTFLAGS='--cfg getrandom_backend="wasm_js"' wasm-pack build --target web --release
       - name: Upload pkg folder
         uses: actions/upload-artifact@v4
         with:

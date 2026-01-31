@@ -12,12 +12,10 @@ wasm-bindgen = "0.2"
 # pqcrypto-dilithium bản mới nhất hỗ trợ chuẩn ML-DSA-65
 pqcrypto-dilithium = "0.5"
 pqcrypto-traits = "0.3"
-getrandom = { version = "0.3", features = ["wasm_js"] }
-# Nếu một số thư viện cũ vẫn dùng v0.2, thêm dòng này:
-getrandom_02 = { package = "getrandom", version = "0.2", features = ["js"] }
+getrandom = { version = "0.2", features = ["js"] }
 
 [profile.release]
 opt-level = "s" # Tối ưu hóa dung lượng file wasm
 
-[target.'cfg(all(target_arch = "wasm32", target_os = "unknown"))'.dependencies]
-getrandom = { version = "0.3", features = ["wasm_js"] }
+[patch.crates-io]
+getrandom = { git = "https://github.com", rev = "9a510ad" }
